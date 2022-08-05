@@ -1,18 +1,21 @@
 def add_time(start, duration, starting_day=""):
-    # Separte the start into hours and minutes
+    #Dividimos la hora inicial en 2 partes ['00:00', 'AM/PM']
     Parts = start.split()
+    #Indicamos que Time = Parts[0] o sea 00:00 que ahora será ['00','00']
     time = Parts[0].split(":")
+    #amp será ahora ['AM/PM'] segun corresponda
     ampm = Parts[1]
 
-    # Calculate 24-hour clock format
+    #convertimos a 24h 
+    
     if ampm == "PM" :
         hour = int(time[0]) + 12
         time[0] = str(hour)
     
-    # Separate the duration into hours and minutes
+    #Dividimos duracion en partes ahora será ['00','00']
     DurParts = duration.split(":")
 
-    # Add hours and minutes
+    #Sumamos las horas y los minutos 
     HourSum = int(time[0]) + int(DurParts[0])
     MinSum = int(time[1]) + int(DurParts[1])
 
@@ -26,8 +29,8 @@ def add_time(start, duration, starting_day=""):
         AddDays = HourSum // 24
         HourSum -= AddDays * 24
     
-    # Find AM and PM
-    # Return to 12-hour clock format
+    #Convertimos a formato 12h nuevamente segun si es AM o PM 
+    
     if HourSum > 0 and HourSum < 12 :
         ampm = "AM"
     elif HourSum == 12 :
@@ -38,6 +41,8 @@ def add_time(start, duration, starting_day=""):
     else : # HourSum == 0
         ampm = "AM"
         HourSum += 12
+        
+    #Agregamos dia o dias despues
 
     if AddDays > 0 :
         if AddDays == 1 :
