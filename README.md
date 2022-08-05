@@ -1,6 +1,5 @@
 # Time Calculator
 
-You will be working on this project with our Replit starter code.
 
 Write a function named add_time that takes in two required parameters and one optional parameter:
 
